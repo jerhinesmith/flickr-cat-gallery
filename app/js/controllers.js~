@@ -4,7 +4,7 @@
 
 var flickrCatGalleryApp = angular.module('flickrCatGalleryApp', []);
 
-flickrCatGalleryApp.controller('CatPhotoCtrl',
+flickrCatGallery.controller('CatPhotoCtrl',
 	function ($scope, $http) {
 
 		var config = {

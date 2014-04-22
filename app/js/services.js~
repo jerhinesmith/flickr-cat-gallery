@@ -2,7 +2,6 @@
 
 /* Services */
 
-var flickrCatGalleryApp = angular.module('flickrCatGallery');
 
 // Service for getting the API key
 
