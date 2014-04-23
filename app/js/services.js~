@@ -28,7 +28,7 @@ flickrCatGalleryServices.
 				params : {
 					'method': 'flickr.photos.search',
 					'api_key': flickrApiKey,
-					'tags': 'cat',
+					'tags': 'cats',
 					'safe_search': '1',
 					'format': 'json',
 					'jsoncallback': 'JSON_CALLBACK'
@@ -40,7 +40,7 @@ flickrCatGalleryServices.
 // Service for getting cat photos from Flickr
 
 flickrCatGalleryServices.
-	factory('flickrService', ['$http', 'flickrUrl', 'catPhotoReqConfig',
+	service('flickrService', ['$http', 'flickrUrl', 'catPhotoReqConfig',
 
 		function flickrService($http, flickrUrl, catPhotoReqConfig) {
 
