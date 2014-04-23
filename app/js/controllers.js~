@@ -2,30 +2,23 @@
 
 /* Controllers */
 
-var flickrCatGalleryApp = angular.module('flickrCatGalleryApp', []);
+var flickrCatGalleryControllers = angular.module('flickrCatGallery.controllers', []);
 
-flickrCatGallery.controller('CatPhotoCtrl',
-	function ($scope, $http) {
+flickrCatGalleryControllers.controller('CatPhotoCtrl', [
+	'$scope', 'flickrService', function ($scope, flickrService) {
 
-		var config = {
-			params: {
-				'method': 'flickr.photos.search',
-				'api_key': 'b354daa288a13415c94441bdfd352257',
-				'tags': 'cat',
-				'safe_search': '1',
-				'format': 'json',
-				'jsoncallback': 'JSON_CALLBACK'
-			}
-		};
-		
-		var flickrUrl = 'http://api.flickr.com/services/rest/';
+		var photos = {};
 
-		$http.jsonp(flickrUrl, config)
+		flickrService.getCatPhotos()
 			.success(function (data, status, headers, config) {
-				$scope.photos = data.photos.photo;
+				photos = data.photos.photo;
 			})
 
 			.error(function (data, status, headers, config) {
 				console.log('Error getting response from Flickr');
-		});
-});
+			});
+
+		$scope.photos = photos;
+
+		console.log(photos);
+}]);

@@ -3,6 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('flickrCatGalleryApp', [
-	'flickrCatGalleryApp.controllers'
+	'flickrCatGallery.services',
+	'flickrCatGallery.controllers'	
 ]);
 
