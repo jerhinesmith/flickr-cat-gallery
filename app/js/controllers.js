@@ -7,6 +7,7 @@ var flickrCatGalleryControllers = angular.module('flickrCatGallery.controllers',
 flickrCatGalleryControllers.controller('CatPhotoCtrl', [
     '$scope', 'flickrService', function ($scope, flickrService) {
 
+    // retrieve photos from Flickr
     flickrService.getCatPhotos()
 	.success(function (data, status, headers, config) {
 	    var photosResponse = data.photos.photo;
@@ -32,4 +33,10 @@ flickrCatGalleryControllers.controller('CatPhotoCtrl', [
 	.error(function (data, status, headers, config) {
 	    console.log('Error getting response from Flickr');
 	});
+
+    // event handler for when a thumbnail is clicked
+    $scope.showImage = function(photo) {
+	$scope.featuredPhoto = photo;
+    }
+
 }]);
