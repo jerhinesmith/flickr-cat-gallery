@@ -9,34 +9,34 @@ flickrCatGalleryControllers.controller('CatPhotoCtrl', [
 
     // retrieve photos from Flickr
     flickrService.getCatPhotos()
-	.success(function (data, status, headers, config) {
-	    var photosResponse = data.photos.photo;
-	    var photos = [];
+    	.success(function (data, status, headers, config) {
+    	    var photosResponse = data.photos.photo;
+    	    var photos = [];
 
-	    // for each photo, get the original image url and the thumbnail url
-	    angular.forEach(photosResponse, function (photo) {
-		var imageUrl = "http://farm" + photo.farm + ".staticflickr.com/" + photo.server +
-		    "/" + photo.id + "_" + photo.secret;
-		
-		var newPhoto = {
-		    src: imageUrl + "_z.jpg",
-		    thumbnail: imageUrl + "_s.jpg"
-		};
+    	    // for each photo, get the original image url and the thumbnail url
+    	    angular.forEach(photosResponse, function (photo) {
+        		var imageUrl = "http://farm" + photo.farm + ".staticflickr.com/" +
+                    photo.server + "/" + photo.id + "_" + photo.secret;
 
-		photos.push(newPhoto);
-	    });
+        		var newPhoto = {
+        		    src: imageUrl + ".jpg",
+        		    thumbnail: imageUrl + "_s.jpg"
+        		};
 
-	    $scope.photos = photos;
-	    $scope.featuredPhoto = photos[0];
-	})
+        		photos.push(newPhoto);
+    	    });
 
-	.error(function (data, status, headers, config) {
-	    console.log('Error getting response from Flickr');
-	});
+    	    $scope.photos = photos;
+    	    $scope.featuredPhoto = photos[0];
+    	})
+
+    	.error(function (data, status, headers, config) {
+    	    console.log('Error getting response from Flickr');
+    	});
 
     // event handler for when a thumbnail is clicked
     $scope.showImage = function(photo) {
-	$scope.featuredPhoto = photo;
+        $scope.featuredPhoto = photo;
     }
 
 }]);
